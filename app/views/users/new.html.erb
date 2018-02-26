@@ -1,0 +1,33 @@
+<h1> Registration and Log in</h1>
+<h3> Register for new users </h3>
+<% if flash[:notice] %>
+<% flash[:notice].each do |note| %>
+<p id="notice"> <%= note %> </p>
+<% end %>
+<% end %>
+<form action="/users" method="post"> 
+
+<label> Name </label>
+<input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">
+<input type="text" name="user[name]" id="user_name">
+<label>Alias</label>
+<input type="text" name="user[alias]" id="user_alias">
+<label>Email</label>
+<input type="text" name="user[email]" id="user_email">
+<label>Password</label>
+<input type="password" name="user[password]" id="user_password">
+<label>Password Confirmation</label>
+<input type="password" name="user[password_confirmation]" id="user_password_confirmation">
+<button> Register </button>
+</form>
+
+<h3> Returning Users </h3>
+<h5> Log in </h5>
+<form action="/sessions/log" method="post">
+<input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">
+<label> Email <label>
+<input type="text" name="user[email]" id="user_email">
+<label> Password </label>
+<input type="password" name="user[password]" id="user_password">
+<button> Log In </button>
+</form>

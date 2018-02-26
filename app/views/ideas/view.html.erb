@@ -1,0 +1,15 @@
+<a href="/bright_ideas"> Bright Ideas</a>
+<a href="/logout"> Log Out </a>
+
+<p> Ip says <div> Let's try createing an app that will ask for peoples problems then return some analysis (with graphs and tables) on what would show the best solutions (with scuccsrats).</div>
+</p>
+<h5> People who like this post: 
+
+<table>
+<tr><th>Alias</th>
+<th>Name</th>
+</tr>
+<% @likes.each do |idea|%>
+<tr><td><a href="/users/<%= idea.users_id %>"> <%= User.find(idea.users_id).alias %></a></td>
+<td> <%= User.find(idea.users_id).name %> </td>
+<% end %>

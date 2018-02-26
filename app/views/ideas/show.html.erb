@@ -1,0 +1,22 @@
+
+<a href="/logout"> Log Out </a>
+<h1>Hi <%= current_user.name %>!</h1>
+
+<form action="/ideas" method="post">
+<input type = 'hidden' name = "authenticity_token" value = "<%=form_authenticity_token%>">
+<input type="text" name="idea[content]" id="idea_content" value="Post something witty here.." >
+<button>Idea!</button>
+</form>
+<% @ideas.each do |idea| %>
+<div><%= User.find(idea.users_id).name %> <span><%= idea.content %></span>
+ <span><form action="/bright_ideas/<%= idea.id %>" method="post">
+<input type="hidden" name="_method" value="patch">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<button>Like</button>
+</form></span>
+<span> <a href="/bright_ideas/<%=idea.id%>"> <%=idea.count%> people</a> liked </span>
+<% end %>
+
+</div>
+
+
